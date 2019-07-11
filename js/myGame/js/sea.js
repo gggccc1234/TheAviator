@@ -29,7 +29,6 @@ function Sea() {
             speed: Util.rand(Global.config.wavesMinSpeed, Global.config.wavesMaxSpeed),
         });
     }
-    console.error(this.waves);
     let mat = new THREE.MeshPhongMaterial({
         color: Colors.blue,
         transparent: true,

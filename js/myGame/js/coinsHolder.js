@@ -21,12 +21,12 @@ CoinsHolder.prototype.spawnCoins = function () {
         coin.angle = -(i * 0.02);
         coin.distance = distance + Math.cos(i * 0.5) * amplitude;
         coin.mesh.position.x = Math.cos(coin.angle) * coin.distance;
-        coin.mesh.position.y = -game.seaRadius + Math.sin(coin.angle) * coin.distance;
+        coin.mesh.position.y = -Global.config.seaRadius + Math.sin(coin.angle) * coin.distance;
     }
 }
 
 CoinsHolder.prototype.rotateCoins = function () {
-    for (let i = 0; this.coinsInUse.length; i++) {
+    for (let i = 0; i < this.coinsInUse.length; i++) {
         let coin = this.coinsInUse[i];
         coin.angle += Global.config.speed * Global.deltaTime * Global.config.coinsSpeed;
         if (coin.angle > Math.PI * 2) {

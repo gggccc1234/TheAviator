@@ -33,8 +33,8 @@ EnnemiesHolder.prototype.rotateEnnemies = function() {
     for (let i = 0; i < this.ennemiesInUse.length; i++) {
         let ennemy = this.ennemiesInUse[i];
         ennemy.angle += Global.config.speed * Global.deltaTime * Global.config.ennemiesSpeed;
-        ennemy.mesh.position.x = Math.cos(ennemy.angle) * ennem.distance;
-        ennemy.mesh.position.y = -game.seaRadius + Math.sin(ennemy.angle) * ennemy.distance;
+        ennemy.mesh.position.x = Math.cos(ennemy.angle) * ennemy.distance;
+        ennemy.mesh.position.y = -Global.config.seaRadius + Math.sin(ennemy.angle) * ennemy.distance;
         ennemy.mesh.rotation.y += Math.random() * 0.1;
         ennemy.mesh.rotation.z += Math.random() * 0.1;
         if (ennemy.angle > Math.PI) {

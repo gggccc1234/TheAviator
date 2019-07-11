@@ -1,11 +1,3 @@
-function showReplay() {
-    Global.replayMessage.style.display = "block";
-}
-
-function hideReplay() {
-    Global.replayMessage.style.display = "none";
-}
-
 var game = new Game();
 
 window.addEventListener('load', function () {
@@ -41,13 +33,13 @@ window.addEventListener('load', function () {
     document.addEventListener('mouseup', function (event) {
         if (Global.config.status == "waitingReplay") {
             game.resetGame();
-            hideReplay();
+            game.hideReplay();
         }
     }, false);
     document.addEventListener('touchend', function (event) {
         if (Global.config.status == "waitingReplay") {
             game.resetGame();
-            hideReplay();
+            game.hideReplay();
         }
     }, false);
     game.init();

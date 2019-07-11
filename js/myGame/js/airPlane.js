@@ -166,3 +166,40 @@ function AirPlane () {
     this.mesh.castShadow = true;
     this.mesh.receiveShadow = true;
 }
+
+AirPlane.prototype.updatePlane = function () {
+    // 根据鼠标位置更新飞机飞行速度
+    Global.config.planeSpeed = Util.normalize(
+        Global.mousePos.x, 
+        -0.5, 
+        0.5, 
+        Global.config.planeMinSpeed, 
+        Global.config.planeMaxSpeed
+    );
+    let targetX = Util.normalize(
+        Global.mousePos.x, 
+        -1, 
+        1, 
+        -Global.config.planeAmpWidth * 0.7,
+        -Global.config.planeAmpWidth
+    );
+    let targetY = Util.normalize(
+        Global.mousePos.y, 
+        -0.75, 
+        0.75, 
+        Global.config.planeDefaultHeight - Global.config.planeAmpHeight, 
+        Global.config.planeDefaultHeight + Global.config.planeAmpHeight, 
+    );
+    Global.config.planeCollisionDisplacementX += Global.config.planeCollisionSpeedX;
+    targetX += Global.config.planeCollisionDisplacementX;
+    Global.config.planeCollisionDisplacementY += Global.config.planeCollisionSpeedY;
+    targetY += Global.config.planeCollisionDisplacementY;
+    this.mesh.position.x += (targetX - this.mesh.position.x) * Global.deltaTime * Global.config.planeMoveSensivity;
+    this.mesh.position.y += (targetY - this.mesh.position.y) * Global.deltaTime * Global.config.planeMoveSensivity;
+    this.mesh.rotation.z = (targetY - this.mesh.position.y) * Global.deltaTime * Global.config.planeRotXSensivity;
+    this.mesh.rotation.x = (this.mesh.position.y - targetY) * Global.deltaTime * Global.config.planeRotZSensivity;
+    Global.config.planeCollisionSpeedX += (0 - Global.config.planeCollisionSpeedX) * Global.deltaTime * 0.03;
+    Global.config.planeCollisionDisplacementX += (0 - Global.config.planeCollisionDisplacementX) * Global.deltaTime * 0.01;
+    Global.config.planeCollisionSpeedY += (0 - Global.config.planeCollisionSpeedY) * Global.deltaTime * 0.03;
+    Global.config.planeCollisionDisplacementY += (0 - Global.config.planeCollisionDisplacementY) * Global.deltaTime * 0.01;
+}

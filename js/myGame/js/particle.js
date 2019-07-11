@@ -15,10 +15,10 @@ Particle.prototype.explode = function(r_position, r_color, r_scale, r_callBack) 
     let _this = this;
     this.mesh.material.color = new THREE.Color(r_color);
     this.mesh.material.needsUpdate = true;
-    this.mesh.material.scale.set(r_scale, r_scale, r_scale);
+    this.mesh.scale.set(r_scale, r_scale, r_scale);
     let targetX = r_position.x + (-1 + Math.random() * 2) * 50;
     let targetY = r_position.y + (-1 + Math.random() * 2) * 50;
-    let duration = 0.6 + Math.random() * 2 * 50;
+    let duration = 0.6 + Math.random() * 2;
     TweenMax.to(this.mesh.rotation, duration, {
         x: Math.random() * 12,
         y: Math.random() * 12,

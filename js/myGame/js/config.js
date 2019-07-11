@@ -1,5 +1,5 @@
 const Config = {
-    speed: 0,
+    speed: 0, 
     initSpeed: .00035,
     baseSpeed: .00035,
     targetBaseSpeed: .00035,
