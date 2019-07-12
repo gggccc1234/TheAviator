@@ -1,3 +1,13 @@
+import Game from "./game.js";
+import {Config, Colors} from "./config.js";
+import GlobalController from "./globalController.js";
+import UtilFunc from "./util.js";
+
+window.Global = GlobalController.getInstance();
+window.Config = Config;
+window.Colors = Colors;
+window.Util = UtilFunc;
+
 var game = new Game();
 
 window.addEventListener('load', function () {
